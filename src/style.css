@@ -1,0 +1,25 @@
+.corpo{
+    height: 100vh;
+    background-color: #2F5EF7;
+}
+h1{
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+}
+img{
+    height: 75px;
+}
+.tabela-contain{
+    background-color: whitesmoke;
+}
+/* .tabela{ */
+    /* width: 20%; */
+/* } */
+
+.tabela th{
+    text-align: center;
+}
+
+.tabela input{
+    text-align: center;
+}
