@@ -19,7 +19,7 @@ function App() {
       });
       setTabelas(listaTabelas);
     });
-  });
+  }, []);
 
   return (
     <div className="corpo d-flex flex-column align-items-center pb-5">
