@@ -10,6 +10,7 @@ function Line({ id, name, age, estdCivil, cpfNumber, city, estadoName }) {
     const [cpf, setCpf] = useState();
     const [cidade, setCidade] = useState();
     const [estado, setEstado] = useState();
+    const [editar, setEditar] = useState(0);
 
     const db = firebase.firestore();
 
@@ -33,11 +34,15 @@ function Line({ id, name, age, estdCivil, cpfNumber, city, estadoName }) {
         });
     }
 
+    function edit(){
+        setEditar(1);
+    }
+
     return (
         <tr>
             {
-                id != undefined
-                    ?
+                id != undefined 
+                    ? 
                     <>
                         <td><input onChange={(e) => setNome(e.target.value)} className='form-control' type='text' disabled placeholder='Nome' value={name} /></td>
                         <td><input onChange={(e) => setIdade(e.target.value)} className='form-control' type='number' disabled placeholder='24' value={age} /></td>
@@ -87,7 +92,7 @@ function Line({ id, name, age, estdCivil, cpfNumber, city, estadoName }) {
                             </select>
                         </td>
                         <th>
-                            <button onClick={save} type='button' className='btn btn-warning mr-1 '>Editar</button>
+                            <button onClick={edit} disabled type='button' className='btn btn-warning mr-1 '>Editar</button>
                             <button onClick={excluir} type='button' className='btn btn-danger ml-1 text-black'>Excluir</button>
                         </th>
                     </>
@@ -105,8 +110,8 @@ function Line({ id, name, age, estdCivil, cpfNumber, city, estadoName }) {
                                 <option>Viúvo</option>
                             </select>
                         </td>
-                        <td><input onChange={(e) => setCpf(e.target.value)} className='form-control border-success' type='number' placeholder='999.999.999-99' value={cpfNumber} /></td>
-                        <td><input onChange={(e) => setCidade(e.target.value)} className='form-control border-success' type='text' placeholder='São Paulo' value={city} /></td>
+                        <td><input onChange={(e) => setCpf(e.target.value)} className='form-control border-success cpf-mask' id="input_cpf" type='number' placeholder='000.000.000-00' value={cpfNumber} /></td>
+                        <td><input onChange={(e) => setCidade(e.target.value)} className='form-control border-success' type='text' placeholder='Cidade' value={city} /></td>
                         <td>
                             <select onChange={(e) => setEstado(e.target.value)} className='form-control border-success' value={estadoName}>
                                 <option disabled selected hidden>UF</option>
